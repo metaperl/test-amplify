@@ -30,7 +30,9 @@ Betty has three daughters Donna, Elizabeth & Flora
 Clare has two daughters Gloria and Hazel.
 
 This could be represented by the string:
+
     {"Ann": ["Betty", "Clare"], "Betty": ["Donna", "Elizabeth", "Flora"], "Clare": ["Gloria", "Hazel"]}
+
 There are no great granddaughters in this example, so Donna, Elizabeth, Flora, Gloria & Hazel do not appear as keys in the map/string.
 
 A visualization of this might be:
