@@ -36,6 +36,7 @@ This could be represented by the string:
 There are no great granddaughters in this example, so Donna, Elizabeth, Flora, Gloria & Hazel do not appear as keys in the map/string.
 
 A visualization of this might be:
+
     Ann
        Betty
            Donna
