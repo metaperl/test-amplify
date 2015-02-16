@@ -52,13 +52,12 @@ If person ‘X’ is the ancestor of person ‘Y’ then return ‘X’ as the r
 See the 2nd and 5th examples below.
 
 Here are several examples of different pairs of people and the result for the tree as above:
-   1. IN: Hazel & Gloria             OUT: Clare             (they have a direct common mother)
-   2. IN: Hazel & Clare              OUT: Clare             (one is the mother of the other)
-   3. IN: Hazel & Flora              OUT: Ann                (closest is their grandmother)
-   4. IN: Hazel & Betty              OUT: Ann                (the only ancestor in common is Ann)
-   5. IN: Hazel & Ann                OUT: Ann                (one is the grandmother of the other)
-   6. IN: Hazel & Hazel             OUT: Hazel              (they are the same person - just return that person)
-
+   1. IN: Hazel & Gloria        OUT: Clare  (they have a direct common mother)
+   2. IN: Hazel & Clare         OUT: Clare (one is the mother of the other)
+   3. IN: Hazel & Flora         OUT: Ann   (closest is their grandmother)
+   4. IN: Hazel & Betty         OUT: Ann   (the only ancestor in common is Ann)
+   5. IN: Hazel & Ann           OUT: Ann   (one is the grandmother of the other)
+   6. IN: Hazel & Hazel         OUT: Hazel (they are the same person)
 
 Some of the tests will have exactly this tree, with exactly this
 string representation and exactly these pairs of input names which
