@@ -1,0 +1,98 @@
+Construct a database schema that represents Person, Address, and Phone number. Each Person can have multiple addresses, and phone numbers. There are “types” of addresses and phone numbers, e.g. Home Address, Cell phone.
+
+AddressType:
+  id : autoincrement
+  name : varchar(80)
+
+PhoneNumberType:
+  id : autoincrement
+  name : varchar(80)
+
+PhoneNumber
+  id : autoincrement
+  phone_number_type : fk.PhoneNumberType
+  phone_number : varchar (80) # many ways to store phone number
+  phone_number_type : NOT NULL REFERENCES PhoneNumberType.id
+
+Address
+  id : autoincrement
+  street : varchar(255) # design decision
+  street2 : varchar(255)
+  address_type : NOT NULL REFERENCES AddressType.id
+
+
+Person:
+  id : autoincrement
+  first_name : varchar(80)
+  middle_name : varchar(80)
+  last_name : varchar(80)
+
+PersonAddresses:
+  person_id: int NOT NULL
+  address_id : int NOT NULL REFERENCES Address.id
+
+PersonPhoneNumbers:
+  person_id : int NOT NULL
+  phone_number_id int NOT NULL REFERENCES PhoneNumber.id
+
+Write a query that returns the “home” address and phone for each person.
+
+SELECT
+   p.name, pn.phone_number, a.street
+FROM Person p INNER JOIN PersonAddresses pa ON (p.id = pa.person_id)
+   INNER JOIN PersonPhoneNumbers ppn ON (p.id = ppn.person_id)
+   INNER JOIN Address a ON (pa.address_id = a.id)
+   INNER JOIN PhoneNumber pn ON (ppn.phone_number_id = pn.id)
+WHERE
+   a.address_type = (SELECT id FROM AddressType WHERE name = 'home') AND
+   p.phone_number_type = (SELECT id FROM PhoneNumberType WHERE name = 'home')
+
+
+Given a list of sorted integers write a method that returns the index of a specific number.
+
+Given a list of sorted integers write a method that returns the index of a specific number.
+
+def my_index(searched_for, l):
+    for i, v in enumerate(l):
+        if v == searched_for:
+            return i
+    return -1
+
+# 1 2 3 4 5 6 7 8 9
+def logarithmic_index(searched_for, l):
+    current_index = len(l) / 2
+    if l[current_index] == searched_for:
+        return current_index
+    if l[current_index] < searched_for:
+        return logarithmic_index(searched_for, l[0:current_index]
+    return logarithmic_index(searched_for,
+    l[current_index:len(l)/2-1])
+
+Find the most common subsequence of size n in a string
+
+str = "dogcatchcat"
+n = 3
+=> "cat"
+n = 2
+
+def most_common_subseq(n, s):
+    counter = defaultdict(int)
+    for i in len(s)-n:
+        counter[ s[0:n] ] += 1
+    max = -1
+    for k, v in counter.iteritems():
+        if v > max:
+            max = v
+            most_common = k
+    return most_common
+
+def most_common_subseq(n, s):
+    counter = defaultdict(int)
+    max = -1
+    for i in len(s)-n:
+        counter[ s[0:n] ] += 1
+        if counter[ s[0:n] ] > max:
+            max = counter[ s[0:n] ]
+            most_common = s[0:n]
+
+    return most_common
