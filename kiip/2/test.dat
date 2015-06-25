@@ -1,0 +1,52 @@
+            5
+        4       6
+      3   2   1   0
+    9  8   7
+
+# navigation sequence for 9 = [5, 4, 3, 9]
+# navigation sequence for 0 = [5, 6, 0]
+# navigation sequence for 2 = [5, 4]
+# nagivation sequence for 6 = [5]
+
+# memory = ln(N+1) + ln(N+1)
+
+class node:
+    parent
+    right
+    left
+    val
+
+def accumulation(deepest):
+    while deepest:
+       result.append(deepest.val)
+       deepest = deepest.parent
+
+def navseq(t, n):
+    if t.val is None:
+        return False
+    if t.val = n:
+        return accumulation(t)
+    else:
+        v = navseq(t.left, n)
+        if v: return v
+        v = navseq(t.right, n)
+        if v: v
+
+
+
+def last_common(lis1, lis2):
+    for i, (n1, n2) in enumerate(itertools.zip(lis1, lis2)):
+        if n1 != n2:
+            return lis1[i-1]
+    return lis1[i]
+
+def cca(t, n1, n2):
+    lis1 = navseq(t, n1)
+    lis2 = navseq(t, n2, existing_navseq=lis1)
+    return last_common(lis1, lis2)
+
+# but what about 9 and 2? handle existing_
+def cca2(t, n1, n2):
+    lis1 = navseq(t, n1)
+    lis2 = navseq(t, n2, existing_navseq=lis1)
+    return lis2[-1]
